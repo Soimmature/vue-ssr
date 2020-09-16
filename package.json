@@ -16,6 +16,7 @@
     "koa-router": "^9.4.0",
     "koa-static": "^5.0.0",
     "vue": "^2.6.12",
+    "vue-router": "^3.4.3",
     "vue-server-renderer": "^2.6.12"
   },
   "devDependencies": {
