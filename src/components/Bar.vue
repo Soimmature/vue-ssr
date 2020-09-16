@@ -1,5 +1,5 @@
 <template>
-  <div>Bar.vue</div>
+  <div>Bar.vue {{$store.state.name}}</div>
 </template>
 
 <script>
