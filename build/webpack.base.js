@@ -1,28 +1,20 @@
 const path = require('path')
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const resolve = (dir) => {
   return path.resolve(__dirname, dir)
 }
 
 module.exports = {
-  entry: resolve('./src/main.js'),
   output: {
-    filename: 'bundle.js',
-    path: resolve('./dist'),
+    filename: '[name].bundle.js',
+    path: resolve('../dist'),
   },
   resolve: {
     extensions: ['.js', '.vue'],
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: resolve('./public/index.html'),
-    }),
-  ],
+  plugins: [new VueLoaderPlugin()],
   module: {
     rules: [
       {
@@ -39,7 +31,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            },
+          },
+        ],
       },
     ],
   },

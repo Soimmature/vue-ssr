@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-const vm = new Vue({
-  el: '#app',
-  render: (h) => h(App),
-})
+
+// 提供vue实例
+// 服务端渲染， 每个都要有一个自己的实例
+export default () => {
+  const app = new Vue({
+    render: (h) => h(App),
+  })
+
+  return { app }
+}
